@@ -500,11 +500,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\david\\Documents\\GitHub\\Zebra\\Zebra.csproj",
+      "projectUniqueName": "D:\\david\\Documents\\GitHub\\Zebra\\src\\Zebra\\Zebra.csproj",
       "projectName": "Zebra",
-      "projectPath": "D:\\david\\Documents\\GitHub\\Zebra\\Zebra.csproj",
+      "projectPath": "D:\\david\\Documents\\GitHub\\Zebra\\src\\Zebra\\Zebra.csproj",
       "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
-      "outputPath": "D:\\david\\Documents\\GitHub\\Zebra\\obj\\",
+      "outputPath": "D:\\david\\Documents\\GitHub\\Zebra\\src\\Zebra\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config",

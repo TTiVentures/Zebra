@@ -8,17 +8,17 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows,browser
 build_property.RootNamespace = Zebra
 build_property.RootNamespace = Zebra
-build_property.ProjectDir = D:\david\Documents\GitHub\Zebra\
+build_property.ProjectDir = D:\david\Documents\GitHub\Zebra\src\Zebra\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\david\Documents\GitHub\Zebra
+build_property.MSBuildProjectDirectory = D:\david\Documents\GitHub\Zebra\src\Zebra
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/david/Documents/GitHub/Zebra/_Imports.razor]
+[D:/david/Documents/GitHub/Zebra/src/Zebra/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/david/Documents/GitHub/Zebra/Component1.razor]
+[D:/david/Documents/GitHub/Zebra/src/Zebra/Component1.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50MS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-fj2cllrqd7

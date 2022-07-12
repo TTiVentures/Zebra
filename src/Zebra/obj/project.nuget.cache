@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "X8V5LvcxZCweOlFbYL1j98UsdETJtU0Qm0ht66RBqJM0sZoX7r+kIPBbrjCQibd4iMmtnJ6xyK8eBNnW+B/N5A==",
+  "dgSpecHash": "q+j0wF7AbDg2K6eU4l+xqk3awYgLFi79p/etbkpwg73F1B9WQvbNrEelnNGvP0VlOD8DI5ZjpxVc6++2QRBjEw==",
   "success": true,
-  "projectFilePath": "D:\\david\\Documents\\GitHub\\Zebra\\Zebra.csproj",
+  "projectFilePath": "D:\\david\\Documents\\GitHub\\Zebra\\src\\Zebra\\Zebra.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\david\\.nuget\\packages\\microsoft.aspnetcore.authorization\\6.0.6\\microsoft.aspnetcore.authorization.6.0.6.nupkg.sha512",
     "C:\\Users\\david\\.nuget\\packages\\microsoft.aspnetcore.components\\6.0.6\\microsoft.aspnetcore.components.6.0.6.nupkg.sha512",
