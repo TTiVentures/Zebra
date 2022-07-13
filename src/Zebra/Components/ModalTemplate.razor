@@ -1,0 +1,25 @@
+﻿@namespace Zebra.Components;
+
+@typeparam TValue
+
+<dialog>
+	@ChildContent(new DialogEvents(OnOk, OnCancel))
+</dialog>
+
+@code {
+
+	public record DialogEvents(Action<TValue>? OnOk, Action<TValue>? OnCancel)
+	{
+		public void Ok(TValue value) => OnOk?.Invoke(value);
+		public void Cancel(TValue value) => OnCancel?.Invoke(value);
+	}
+
+	[Parameter]
+	public RenderFragment<DialogEvents> ChildContent { get; set; } = default!;
+
+	[Parameter]
+	public Action<TValue>? OnOk { get; set; }
+
+	[Parameter]
+	public Action<TValue>? OnCancel { get; set; }
+}
