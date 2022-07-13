@@ -2,12 +2,7 @@
 
 @typeparam TValue
 
-<dialog>
-	@ChildContent(new DialogEvents(OnOk, OnCancel))
-</dialog>
-
 @code {
-
 	public record DialogEvents(Action<TValue>? OnOk, Action<TValue>? OnCancel)
 	{
 		public void Ok(TValue value) => OnOk?.Invoke(value);
@@ -22,4 +17,6 @@
 
 	[Parameter]
 	public Action<TValue>? OnCancel { get; set; }
+
+	public RenderFragment TemplateContent => ChildContent(new DialogEvents(OnOk, OnCancel));
 }
