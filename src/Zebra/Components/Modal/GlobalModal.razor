@@ -1,0 +1,41 @@
+﻿@using Zebra.Services.Modal
+@inject ModalService ModalService
+@implements IDisposable
+
+<dialog>
+	<span>title: @Title, showModal: @ShowModal</span>
+	@Content
+</dialog>
+
+@code {
+	bool ShowModal { get; set; }
+
+	RenderFragment? Content { get; set; }
+	string? Title { get; set; }
+
+	protected override void OnInitialized()
+	{
+		ModalService.OnOpen += OpenModal;
+		ModalService.OnClose += CloseModal;
+	}
+
+	public void Dispose()
+	{
+		ModalService.OnOpen -= OpenModal;
+		ModalService.OnClose -= CloseModal;
+	}
+
+	private void OpenModal(object? sender, ModalContent e)
+	{
+		Content = e.Content;
+		Title = e.Title;
+		ShowModal = true;
+		StateHasChanged();
+	}
+
+	private void CloseModal(object? sender, EventArgs e)
+	{
+		ShowModal = false;
+		StateHasChanged();
+	}
+}

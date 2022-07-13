@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Zebra.Components;
+using Zebra.Components.Modal;
 
-namespace Zebra.Services;
+namespace Zebra.Services.Modal;
 
 public class ModalContent : EventArgs
 {
@@ -19,8 +19,8 @@ public class ModalService
 		OnClose?.Invoke(this, EventArgs.Empty);
 	}
 
-	public void Open<T>(ModalTemplate<T> content)
+	public void Show<T>(ModalTemplate<T> template, string? title = null)
 	{
-		// OnOpen?.Invoke(this, content);
+		OnOpen?.Invoke(this, new ModalContent() { Title = title, Content = template.TemplateContent });
 	}
 }

@@ -1,6 +1,6 @@
 ﻿@page "/"
-@using Zebra.Components
-@using Zebra.Services
+@using Zebra.Components.Modal
+@using Zebra.Services.Modal
 @inject ModalService Modal
 
 <PageTitle>Index</PageTitle>
@@ -9,18 +9,15 @@
 
 Welcome to your new app.
 
-<ModalTemplate @ref="Test" OnOk="() => Console.WriteLine('a')">
+<ModalTemplate @ref="Test" OnOk="v => Console.WriteLine('a')" TValue="bool">
 	<div>hola</div>
+	<button @onclick="@(() => @context.Ok(true))">Cerrar</button>
 </ModalTemplate>
 
+<button @onclick="@(() => Modal.Show(Test, "hola buenas"))">Open modal</button>
 
 @code {
 
 	ModalTemplate<bool> Test { get; set; } = default!;
-
-	protected override void OnInitialized()
-	{
-		Modal.Open(Test);
-	}
 
 }
