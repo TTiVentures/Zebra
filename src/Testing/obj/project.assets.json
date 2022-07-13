@@ -390,19 +390,6 @@
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
         }
-      },
-      "Zebra/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Microsoft.AspNetCore.Components.Web": "6.0.6"
-        },
-        "compile": {
-          "bin/placeholder/Zebra.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Zebra.dll": {}
-        }
       }
     },
     "net6.0/browser-wasm": {
@@ -787,19 +774,6 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
-        }
-      },
-      "Zebra/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Microsoft.AspNetCore.Components.Web": "6.0.6"
-        },
-        "compile": {
-          "bin/placeholder/Zebra.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Zebra.dll": {}
         }
       }
     }
@@ -1563,18 +1537,12 @@
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "Zebra/1.0.0": {
-      "type": "project",
-      "path": "../Zebra/Zebra.csproj",
-      "msbuildProject": "../Zebra/Zebra.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Microsoft.AspNetCore.Components.WebAssembly >= 6.0.6",
-      "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 6.0.6",
-      "Zebra >= 1.0.0"
+      "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 6.0.6"
     ]
   },
   "packageFolders": {
@@ -1603,11 +1571,7 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {
-            "D:\\david\\Documents\\GitHub\\Zebra\\src\\Zebra\\Zebra.csproj": {
-              "projectPath": "D:\\david\\Documents\\GitHub\\Zebra\\src\\Zebra\\Zebra.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

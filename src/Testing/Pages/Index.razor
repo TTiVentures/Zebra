@@ -1,23 +1,9 @@
 ﻿@page "/"
-@using Zebra.Components.Modal
-@using Zebra.Services.Modal
-@inject ModalService Modal
 
-<PageTitle>Index</PageTitle>
+<pagetitle>Index</pagetitle>
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
-<ModalTemplate @ref="Test" OnOk="v => Console.WriteLine('a')" TValue="bool">
-	<div>hola</div>
-	<button @onclick="@(() => @context.Ok(true))">Cerrar</button>
-</ModalTemplate>
-
-<button @onclick="@(() => Modal.Show(Test, "hola buenas"))">Open modal</button>
-
-@code {
-
-	ModalTemplate<bool> Test { get; set; } = default!;
-
-}
+<surveyprompt Title="How is Blazor working for you?" />
