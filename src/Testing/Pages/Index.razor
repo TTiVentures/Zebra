@@ -10,13 +10,20 @@ Welcome to your new app.
 
 <ModalTemplate TValue="bool" @ref="_modal">
 	<div>hello</div>
+	<button @onclick="() => { _modal2.Show(); }">close</button>
+</ModalTemplate>
+
+<ModalTemplate TValue="bool" @ref="_modal2">
+	<div>goodbye</div>
 	<button @onclick="() => context.Cancel(true)">close</button>
 </ModalTemplate>
 
 <button @onclick="() => _modal.Show()">show modal</button>
+<button @onclick="() => _modal2.Show()">show modal2</button>
 
 @code {
 
 	private ModalTemplate<bool> _modal = default!;
+	private ModalTemplate<bool> _modal2 = default!;
 
 }

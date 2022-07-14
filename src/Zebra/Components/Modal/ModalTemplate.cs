@@ -1,8 +1,10 @@
-﻿@using Zebra.Services.Modal
-@typeparam TValue
+﻿using Microsoft.AspNetCore.Components;
+using Zebra.Services.Modal;
 
-@code {
+namespace Zebra.Components.Modal;
 
+public class ModalTemplate<TValue> : ComponentBase
+{
 	[Inject]
 	private ModalService ModalService { get; set; } = default!;
 
@@ -30,5 +32,5 @@
 
 	public RenderFragment TemplateContent => ChildContent(new DialogEvents(OnOk, OnCancel, ModalService));
 
-	public void Show() => ModalService.Show(this);
+	public void Show(string? title = null) => ModalService.Show(this, title);
 }

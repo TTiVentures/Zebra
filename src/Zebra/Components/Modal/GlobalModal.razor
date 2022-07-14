@@ -5,7 +5,7 @@
 @implements IDisposable
 
 <dialog @ref="_dialogRef">
-	<span>title: @Title, showModal: @ShowModal</span>
+	<span>title: @Title, showModal: @Shown</span>
 	@Content
 </dialog>
 
@@ -13,7 +13,7 @@
 	private ElementReference _dialogRef = default!;
 	private IJSObjectReference _jsModule = default!;
 
-	bool ShowModal { get; set; }
+	bool Shown { get; set; }
 
 	RenderFragment? Content { get; set; }
 	string? Title { get; set; }
@@ -32,16 +32,19 @@
 
 	private async void OpenModal(object? sender, ModalContent e)
 	{
+		if (Shown)
+			CloseModal(sender, EventArgs.Empty);
+
 		Content = e.Content;
 		Title = e.Title;
-		ShowModal = true;
+		Shown = true;
 		await _jsModule.InvokeVoidAsync("showModal", _dialogRef);
 		StateHasChanged();
 	}
 
 	private async void CloseModal(object? sender, EventArgs e)
 	{
-		ShowModal = false;
+		Shown = false;
 		await _jsModule.InvokeVoidAsync("closeModal", _dialogRef);
 		StateHasChanged();
 	}
@@ -49,7 +52,8 @@
 	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{
 		_jsModule = await Js.InvokeAsync<IJSObjectReference>(
-			"import", "./_content/Zebra/Components/Modal/GlobalModal.razor.js");
+			"import", "./_content/Zebra/Components/Modal/GlobalModal.razor.js"
+		);
 	}
 
 }
