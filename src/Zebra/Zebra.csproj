@@ -19,4 +19,11 @@
 		<Folder Include="wwwroot" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Content Include="Components\Modal\GlobalModal.razor.js">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	</ItemGroup>
+
 </Project>

@@ -1,13 +1,18 @@
 ﻿@using Zebra.Services.Modal
+@using Microsoft.JSInterop
 @inject ModalService ModalService
+@inject IJSRuntime Js
 @implements IDisposable
 
-<dialog>
+<dialog @ref="_dialogRef">
 	<span>title: @Title, showModal: @ShowModal</span>
 	@Content
 </dialog>
 
 @code {
+	private ElementReference _dialogRef = default!;
+	private IJSObjectReference _jsModule = default!;
+
 	bool ShowModal { get; set; }
 
 	RenderFragment? Content { get; set; }
@@ -25,17 +30,26 @@
 		ModalService.OnClose -= CloseModal;
 	}
 
-	private void OpenModal(object? sender, ModalContent e)
+	private async void OpenModal(object? sender, ModalContent e)
 	{
 		Content = e.Content;
 		Title = e.Title;
 		ShowModal = true;
+		await _jsModule.InvokeVoidAsync("showModal", _dialogRef);
 		StateHasChanged();
 	}
 
-	private void CloseModal(object? sender, EventArgs e)
+	private async void CloseModal(object? sender, EventArgs e)
 	{
 		ShowModal = false;
+		await _jsModule.InvokeVoidAsync("closeModal", _dialogRef);
 		StateHasChanged();
 	}
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		_jsModule = await Js.InvokeAsync<IJSObjectReference>(
+			"import", "./_content/Zebra/Components/Modal/GlobalModal.razor.js");
+	}
+
 }
