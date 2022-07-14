@@ -29,4 +29,6 @@
 	public Action<TValue>? OnCancel { get; set; }
 
 	public RenderFragment TemplateContent => ChildContent(new DialogEvents(OnOk, OnCancel, ModalService));
+
+	public void Show() => ModalService.Show(this);
 }

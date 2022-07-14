@@ -1,7 +1,22 @@
 ﻿@page "/"
+@using Zebra.Components.Modal
 
 <PageTitle>Index</PageTitle>
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+
+
+<ModalTemplate TValue="bool" @ref="_modal">
+	<div>hello</div>
+	<button @onclick="() => context.Cancel(true)">close</button>
+</ModalTemplate>
+
+<button @onclick="() => _modal.Show()">show modal</button>
+
+@code {
+
+	private ModalTemplate<bool> _modal = default!;
+
+}
