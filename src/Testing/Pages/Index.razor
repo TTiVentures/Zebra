@@ -8,12 +8,12 @@
 Welcome to your new app.
 
 
-<ModalTemplate TValue="bool" @ref="_modal">
+<ModalTemplate TValue="bool" @ref="_modal" Title="This is a test">
 	<div>hello</div>
 	<button @onclick="() => { _modal2.Show(); }">close</button>
 </ModalTemplate>
 
-<ModalTemplate TValue="bool" @ref="_modal2">
+<ModalTemplate TValue="bool" @ref="_modal2" Title="Yeah another test">
 	<div>goodbye</div>
 	<button @onclick="() => context.Cancel(true)">close</button>
 </ModalTemplate>

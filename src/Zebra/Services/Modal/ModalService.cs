@@ -14,13 +14,21 @@ public class ModalService
 	public EventHandler<EventArgs>? OnClose { get; set; }
 	public EventHandler<ModalContent>? OnOpen { get; set; }
 
+	/// <summary>
+	/// Close the modal.
+	/// </summary>
 	public void Close()
 	{
 		OnClose?.Invoke(this, EventArgs.Empty);
 	}
 
-	public void Show<T>(ModalTemplate<T> template, string? title = null)
+	/// <summary>
+	/// Show a <see cref="ModalTemplate{TValue}"/> on the dialog.
+	/// </summary>
+	/// <param name="template"><see cref="ModalTemplate{TValue}"/> to show.</param>
+	/// <typeparam name="T">Type of the value the templates holds on its <c>TValue</c>.</typeparam>
+	public void Show<T>(ModalTemplate<T> template)
 	{
-		OnOpen?.Invoke(this, new ModalContent() { Title = title, Content = template.TemplateContent });
+		OnOpen?.Invoke(this, new ModalContent() { Title = template.Title, Content = template.TemplateContent });
 	}
 }
