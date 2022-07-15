@@ -3,37 +3,26 @@ using Zebra.Components.Modal;
 
 namespace Zebra.Services.Modal;
 
-public class ModalContent : EventArgs
-{
-	public string? Title { get; set; }
-	public RenderFragment Content { get; set; } = default!;
-}
 
 public class ModalService
 {
-	private IModalTemplate? CurrentTemplate { get; set; }
-	public EventHandler<EventArgs>? OnClose { get; set; }
-	public EventHandler<ModalContent>? OnOpen { get; set; }
+	public EventHandler<IModalTemplate?>? OnClose { get; set; }
+	public EventHandler<IModalTemplate>? OnOpen { get; set; }
 
 	/// <summary>
 	/// Close the modal.
 	/// </summary>
 	public void Close()
 	{
-		OnClose?.Invoke(this, EventArgs.Empty);
+		OnClose?.Invoke(this, null);
 	}
 
 	/// <summary>
-	/// Closes the specified modal template.
+	/// Close a modal template.
 	/// </summary>
-	/// <param name="template">Template to close</param>
-	/// <exception cref="InvalidModalException">Raised when the specified template is not currently open.</exception>
 	public void Close(IModalTemplate template)
 	{
-		if (!ReferenceEquals(template, CurrentTemplate))
-			throw new InvalidModalException("Cannot close a modal that is not open.");
-
-		Close();
+		OnClose?.Invoke(this, template);
 	}
 
 	/// <summary>
@@ -43,8 +32,7 @@ public class ModalService
 	/// <typeparam name="T">Type of the value the templates holds on its <c>TValue</c>.</typeparam>
 	public void Show<T>(ModalTemplate<T> template)
 	{
-		CurrentTemplate = template;
-		OnOpen?.Invoke(this, new ModalContent() { Title = template.Title, Content = template.TemplateContent });
+		OnOpen?.Invoke(this, template);
 	}
 }
 

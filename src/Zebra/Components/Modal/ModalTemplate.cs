@@ -48,11 +48,17 @@ public class ModalTemplate<TValue> : ComponentBase, IModalTemplate
 	[Parameter]
 	public Action<TValue>? OnCancel { get; set; }
 
+	[Parameter]
+	public Action? OnDismiss { get; set; }
+
 	/// <summary>
 	/// Title that will be displayed at the header of the modal.
 	/// </summary>
 	[Parameter]
 	public string? Title { get; set; }
+
+	[Parameter]
+	public bool DismissOnOutClick { get; set; } = true;
 
 	public RenderFragment TemplateContent => ChildContent(new ModalEvents(OnOk, OnCancel, ModalService));
 
@@ -62,7 +68,23 @@ public class ModalTemplate<TValue> : ComponentBase, IModalTemplate
 	public void Show() => ModalService.Show(this);
 
 	public void Close() => ModalService.Close(this);
+
+	public void Dismiss()
+	{
+		if (!DismissOnOutClick)
+			return;
+
+		Close();
+		OnDismiss?.Invoke();
+	}
 }
 
 public interface IModalTemplate
-{ }
+{
+	public void Dismiss();
+
+	[Parameter]
+	public string? Title { get; set; }
+
+	public RenderFragment TemplateContent { get; }
+}

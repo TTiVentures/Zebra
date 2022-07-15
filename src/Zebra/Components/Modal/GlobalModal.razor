@@ -4,19 +4,21 @@
 @inject IJSRuntime Js
 @implements IDisposable
 
-<dialog @ref="_dialogRef">
-	<div class="content-container">
-
-	</div>
-	<h1>@Title</h1>
-	<div class="content-wrapper">
-		@Content
+<dialog @ref="_dialogRef" @onclick="() => _currentTemplate?.Dismiss()">
+	<div class="content-container" @onclick:stopPropagation="true">
+		<h1>@_currentTemplate?.Title</h1>
+		<div class="content-wrapper">
+			@_currentTemplate?.TemplateContent
+		</div>
 	</div>
 </dialog>
+
+
 
 @code {
 	private ElementReference _dialogRef = default!;
 	private IJSObjectReference _jsModule = default!;
+	private IModalTemplate? _currentTemplate;
 
 	private bool _shown;
 	public bool Shown
@@ -28,9 +30,6 @@
 			_shown = value;
 		}
 	}
-
-	RenderFragment? Content { get; set; }
-	string? Title { get; set; }
 
 	protected override void OnInitialized()
 	{
@@ -44,19 +43,22 @@
 		ModalService.OnClose -= CloseModal;
 	}
 
-	private void OpenModal(object? sender, ModalContent e)
+	private void OpenModal(object? sender, IModalTemplate e)
 	{
-		Content = e.Content;
-		Title = e.Title;
+		_currentTemplate = e;
 		Shown = true;
 
 		StateHasChanged();
 	}
 
-	private async void CloseModal(object? sender, EventArgs e)
+	private void CloseModal(object? sender, IModalTemplate? e)
 	{
+		if (e is not null && !ReferenceEquals(e, _currentTemplate))
+			throw new InvalidModalException("Modal closed by another modal.");
+
 		Shown = false;
-		await _jsModule.InvokeVoidAsync("closeModal", _dialogRef);
+		_jsModule.InvokeVoidAsync("closeModal", _dialogRef);
+
 		StateHasChanged();
 	}
 

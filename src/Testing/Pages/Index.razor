@@ -11,13 +11,20 @@ Welcome to your new app.
 <ModalTemplate TValue="bool" @ref="_modal" Title="This is a test">
 	<div>hello</div>
 	<button @onclick="() => _modal2.Show()">close</button>
+	<button @onclick="() => _modal2.Close()">BREAK</button>
 </ModalTemplate>
 
-<ModalTemplate TValue="bool" @ref="_modal2" Title="Yeah another test">
+<ModalTemplate TValue="bool" @ref="_modal2" Title="Yeah another test" OnDismiss="() => _modal3.Show()">
 	<div>goodbye</div>
 	<button @onclick="() => _modal2.Close()">close</button>
 	<ButtonTest></ButtonTest>
 </ModalTemplate>
+
+<ModalTemplate TValue="bool" @ref="_modal3" Title="Please don't dismiss us!">
+	<div>please!!!!!!111!</div>
+</ModalTemplate>
+
+
 
 <button @onclick="() => _modal.Show()">show modal</button>
 <button @onclick="() => _modal2.Show()">show modal2</button>
@@ -26,5 +33,6 @@ Welcome to your new app.
 
 	private ModalTemplate<bool> _modal = default!;
 	private ModalTemplate<bool> _modal2 = default!;
+	private ModalTemplate<bool> _modal3 = default!;
 
 }
