@@ -18,7 +18,16 @@
 	private ElementReference _dialogRef = default!;
 	private IJSObjectReference _jsModule = default!;
 
-	bool Shown { get; set; }
+	private bool _shown;
+	public bool Shown
+	{
+		get => _shown;
+		set {
+			if (!_shown && value)
+				_jsModule.InvokeVoidAsync("showModal", _dialogRef);
+			_shown = value;
+		}
+	}
 
 	RenderFragment? Content { get; set; }
 	string? Title { get; set; }
@@ -35,14 +44,11 @@
 		ModalService.OnClose -= CloseModal;
 	}
 
-	private async void OpenModal(object? sender, ModalContent e)
+	private void OpenModal(object? sender, ModalContent e)
 	{
 		Content = e.Content;
 		Title = e.Title;
 		Shown = true;
-
-		if (Shown)
-			await _jsModule.InvokeVoidAsync("showModal", _dialogRef);
 
 		StateHasChanged();
 	}
