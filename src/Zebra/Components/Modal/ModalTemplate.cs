@@ -7,13 +7,12 @@ namespace Zebra.Components.Modal;
 /// Defines a fragment of razor components that will be displayed inside a modal whenever requested.
 /// </summary>
 /// <typeparam name="TValue">The type of the value this modal will return.</typeparam>
-/// <param name="OnCancel">Callback that will be called when the template calls <code>@context.Cancel()</code></param>
 public class ModalTemplate<TValue> : ComponentBase
 {
 	[Inject]
 	private ModalService ModalService { get; set; } = default!;
 
-	public record DialogEvents(Action<TValue>? OnOk, Action<TValue>? OnCancel, ModalService ModalService)
+	public record ModalEvents(Action<TValue>? OnOk, Action<TValue>? OnCancel, ModalService ModalService)
 	{
 		/// <summary>
 		/// Dispatches the <see cref="OnOk"/> callback.
@@ -35,7 +34,7 @@ public class ModalTemplate<TValue> : ComponentBase
 	}
 
 	[Parameter]
-	public RenderFragment<DialogEvents> ChildContent { get; set; } = default!;
+	public RenderFragment<ModalEvents> ChildContent { get; set; } = default!;
 
 	/// <summary>
 	/// Callback that will be called when the template calls <c>@context.Ok()</c>
@@ -55,7 +54,7 @@ public class ModalTemplate<TValue> : ComponentBase
 	[Parameter]
 	public string? Title { get; set; }
 
-	public RenderFragment TemplateContent => ChildContent(new DialogEvents(OnOk, OnCancel, ModalService));
+	public RenderFragment TemplateContent => ChildContent(new ModalEvents(OnOk, OnCancel, ModalService));
 
 	/// <summary>
 	/// Requests the <see cref="ModalService"/> to display this <see cref="ModalContent"/> in a modal.

@@ -264,3 +264,6 @@ FakesAssemblies/
 
 # Jetbrains
 /.idea/
+
+# CSS and JS maps
+*.map

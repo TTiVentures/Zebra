@@ -15,7 +15,8 @@ Welcome to your new app.
 
 <ModalTemplate TValue="bool" @ref="_modal2" Title="Yeah another test">
 	<div>goodbye</div>
-	<button @onclick="() => context.Cancel(true)">close</button>
+	<button @onclick="() => context.Ok(true)">close</button>
+	<ButtonTest></ButtonTest>
 </ModalTemplate>
 
 <button @onclick="() => _modal.Show()">show modal</button>

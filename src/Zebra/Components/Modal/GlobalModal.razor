@@ -5,8 +5,13 @@
 @implements IDisposable
 
 <dialog @ref="_dialogRef">
+	<div class="content-container">
+
+	</div>
 	<h1>@Title</h1>
-	@Content
+	<div class="content-wrapper">
+		@Content
+	</div>
 </dialog>
 
 @code {
