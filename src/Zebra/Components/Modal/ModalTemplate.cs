@@ -7,7 +7,7 @@ namespace Zebra.Components.Modal;
 /// Defines a fragment of razor components that will be displayed inside a modal whenever requested.
 /// </summary>
 /// <typeparam name="TValue">The type of the value this modal will return.</typeparam>
-public class ModalTemplate<TValue> : ComponentBase
+public class ModalTemplate<TValue> : ComponentBase, IModalTemplate
 {
 	[Inject]
 	private ModalService ModalService { get; set; } = default!;
@@ -60,4 +60,9 @@ public class ModalTemplate<TValue> : ComponentBase
 	/// Requests the <see cref="ModalService"/> to display this <see cref="ModalContent"/> in a modal.
 	/// </summary>
 	public void Show() => ModalService.Show(this);
+
+	public void Close() => ModalService.Close(this);
 }
+
+public interface IModalTemplate
+{ }

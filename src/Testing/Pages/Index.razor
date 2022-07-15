@@ -10,12 +10,12 @@ Welcome to your new app.
 
 <ModalTemplate TValue="bool" @ref="_modal" Title="This is a test">
 	<div>hello</div>
-	<button @onclick="() => { _modal2.Show(); }">close</button>
+	<button @onclick="() => _modal2.Close()">close</button>
 </ModalTemplate>
 
 <ModalTemplate TValue="bool" @ref="_modal2" Title="Yeah another test">
 	<div>goodbye</div>
-	<button @onclick="() => context.Ok(true)">close</button>
+	<button @onclick="() => _modal2.Close()">close</button>
 	<ButtonTest></ButtonTest>
 </ModalTemplate>
 

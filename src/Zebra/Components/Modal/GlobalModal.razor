@@ -37,13 +37,13 @@
 
 	private async void OpenModal(object? sender, ModalContent e)
 	{
-		if (Shown)
-			CloseModal(sender, EventArgs.Empty);
-
 		Content = e.Content;
 		Title = e.Title;
 		Shown = true;
-		await _jsModule.InvokeVoidAsync("showModal", _dialogRef);
+
+		if (Shown)
+			await _jsModule.InvokeVoidAsync("showModal", _dialogRef);
+
 		StateHasChanged();
 	}
 
