@@ -14,5 +14,17 @@ dialog .content-container {
   gap: 1rem;
   padding: 2rem;
 }
+dialog .content-container.info {
+  background-color: #5bc0de;
+}
+dialog .content-container.success {
+  background-color: #5cb85c;
+}
+dialog .content-container.warning {
+  background-color: #f0ad4e;
+}
+dialog .content-container.danger {
+  background-color: #d9534fr;
+}
 
 /*# sourceMappingURL=GlobalModal.razor.css.map */

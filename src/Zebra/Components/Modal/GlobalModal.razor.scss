@@ -1,4 +1,6 @@
-﻿dialog {
+﻿@use "../../wwwroot/statics";
+
+dialog {
 	background: white;
 	border: none;
 	border-radius: 15px;
@@ -13,6 +15,12 @@
 		flex-direction: column;
 		gap: 1rem;
 		padding: 2rem;
+	}
+
+	@each $x, $y in statics.$accent-colors {
+		.content-container.#{$x} {
+			background-color: $y;
+		}
 	}
 }
 
