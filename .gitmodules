@@ -1,0 +1,3 @@
+[submodule "external/RaceSharp"]
+	path = external/RaceSharp
+	url = https://github.com/TTiVentures/RaceSharp.git

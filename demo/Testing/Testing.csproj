@@ -12,7 +12,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Zebra\Zebra.csproj" />
+      <ProjectReference Include="..\..\src\Zebra\Zebra.csproj" />
+
     </ItemGroup>
 
 </Project>

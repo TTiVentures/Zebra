@@ -66,6 +66,8 @@ public interface IModalTemplate
 {
 	public void Dismiss();
 
+	public AccentColor Accent { get; set; }
+
 	[Parameter]
 	public string? Title { get; set; }
 
