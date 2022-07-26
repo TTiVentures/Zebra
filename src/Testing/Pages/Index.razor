@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using Zebra.Components.Modal
+@using Zebra.Utils
 
 <PageTitle>Index</PageTitle>
 
@@ -20,8 +21,8 @@ Welcome to your new app.
 	<ButtonTest></ButtonTest>
 </ModalTemplate>
 
-<ModalTemplate TValue="bool" @ref="_modal3" Title="Please don't dismiss us!">
-	<div>please!!!!!!111!</div>
+<ModalTemplate TValue="bool" @ref="_modal3" Title="Please don't dismiss us!" Accent="AccentColor.Danger">
+	<OkCancelButtons Ctx="context"/>
 </ModalTemplate>
 
 
