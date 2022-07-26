@@ -1,18 +1,22 @@
 ﻿@using Zebra.Services.Modal
 @using Microsoft.JSInterop
 @using RaceSharp
+@using Zebra.Utils
 @inject ModalService ModalService
 @inject IJSRuntime Js
 @implements IDisposable
 
 
-<dialog @ref="_dialogRef" @onclick="() => _currentTemplate?.Dismiss()">
-	<div class="content-container" @onclick:stopPropagation="true">
-		<h1>@_currentTemplate?.Title</h1>
-		<div class="content-wrapper">
-			@_currentTemplate?.TemplateContent
+<dialog class="@_currentTemplate?.Accent.CssClassName()" @ref="_dialogRef" @onclick="() => _currentTemplate?.Dismiss()">
+	@if (_currentTemplate is not null)
+	{
+		<div class="content-container" @onclick:stopPropagation="true">
+			<h1>@_currentTemplate.Title</h1>
+			<div class="content-wrapper">
+				@_currentTemplate.TemplateContent
+			</div>
 		</div>
-	</div>
+	}
 </dialog>
 
 
