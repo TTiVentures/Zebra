@@ -1,0 +1,9 @@
+﻿div {
+	text-align: right;
+	padding-top: .5rem;
+	margin: 1rem -1rem -1rem;
+
+	&:last-of-type {
+		border-top: 2px solid #d5d5d5;
+	}
+}

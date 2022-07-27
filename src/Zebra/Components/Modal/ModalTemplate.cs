@@ -14,7 +14,7 @@ public class ModalTemplate<TValue> : ComponentBase, IModalTemplate
 	private ModalService ModalService { get; set; } = default!;
 
 	[Parameter]
-	public RenderFragment<ModalEvents<TValue>> ChildContent { get; set; } = default!;
+	public RenderFragment<ModalData<TValue>> ChildContent { get; set; } = default!;
 
 	[Parameter]
 	public AccentColor Accent { get; set; }
@@ -43,7 +43,7 @@ public class ModalTemplate<TValue> : ComponentBase, IModalTemplate
 	[Parameter]
 	public bool DismissOnOutClick { get; set; } = true;
 
-	public RenderFragment TemplateContent => ChildContent(new ModalEvents<TValue>(OnOk, OnCancel, ModalService));
+	public RenderFragment TemplateContent => ChildContent(new ModalData<TValue>(ModalService, this));
 
 	/// <summary>
 	/// Requests the <see cref="ModalService"/> to display this <see cref="ModalContent"/> in a modal.
@@ -74,14 +74,14 @@ public interface IModalTemplate
 	public RenderFragment TemplateContent { get; }
 }
 
-public record ModalEvents<T>(Action<T>? OnOk, Action<T>? OnCancel, ModalService ModalService)
+public record ModalData<T>(ModalService ModalService, ModalTemplate<T> Template)
 {
 	/// <summary>
 	/// Dispatches the <see cref="OnOk"/> callback.
 	/// </summary>
 	/// <param name="value">Value to pass to the callback.</param>
 	public void Ok(T value) {
-		OnOk?.Invoke(value);
+		Template.OnOk?.Invoke(value);
 		ModalService.Close();
 	}
 
@@ -90,7 +90,9 @@ public record ModalEvents<T>(Action<T>? OnOk, Action<T>? OnCancel, ModalService 
 	/// </summary>
 	/// <param name="value">Value to pass to the callback.</param>
 	public void Cancel(T value) {
-		OnCancel?.Invoke(value);
+		Template.OnCancel?.Invoke(value);
 		ModalService.Close();
 	}
+
+	public AccentColor Accent => Template.Accent;
 }

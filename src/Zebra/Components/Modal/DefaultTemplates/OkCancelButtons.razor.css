@@ -1,0 +1,10 @@
+div {
+  text-align: right;
+  padding-top: 0.5rem;
+  margin: 1rem -1rem -1rem;
+}
+div:last-of-type {
+  border-top: 2px solid #d5d5d5;
+}
+
+/*# sourceMappingURL=OkCancelButtons.razor.css.map */

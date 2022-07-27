@@ -1,0 +1,31 @@
+button {
+  padding: 0.5rem 2.25rem;
+  color: black;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  font-family: var(--zebra-font-family, Arial);
+  background-color: #d5d5d5;
+  transition: 0.15s;
+}
+button.always-color.accent-none, button.accent-none:hover:not(.always-color) {
+  background-color: #9b9b9b;
+}
+button.always-color.accent-info, button.accent-info:hover:not(.always-color) {
+  background-color: #5bc0de;
+}
+button.always-color.accent-success, button.accent-success:hover:not(.always-color) {
+  background-color: #5cb85c;
+}
+button.always-color.accent-warning, button.accent-warning:hover:not(.always-color) {
+  background-color: #f0ad4e;
+}
+button.always-color.accent-danger, button.accent-danger:hover:not(.always-color) {
+  background-color: #d9534f;
+}
+button.always-color:hover {
+  background-color: #d5d5d5;
+}
+
+/*# sourceMappingURL=Button.razor.css.map */

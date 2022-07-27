@@ -1,6 +1,15 @@
-﻿@inherits DefaultTemplateBase<bool>
+﻿@using Zebra.Utils
+@inherits DefaultTemplateBase<bool>
 
 <div>
-	<button onclick="@(() => Ctx.Ok(true))">Ok</button>
-	<button onclick="@(() => Ctx.Cancel(true))">Cancel</button>
+	@if (Ctx.Accent == AccentColor.Danger)
+	{
+		<Button Accent="AccentColor.Success" OnClick="@(() => Ctx.Ok(true))">Ok</Button>
+		<Button Accent="AccentColor.Danger" OnClick="@(() => Ctx.Cancel(true))">Cancel</Button>
+	}
+	else
+	{
+		<Button Accent="AccentColor.Danger" OnClick="@(() => Ctx.Cancel(true))">Cancel</Button>
+		<Button Accent="AccentColor.Success" OnClick="@(() => Ctx.Ok(true))">Ok</Button>
+	}
 </div>

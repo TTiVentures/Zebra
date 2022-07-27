@@ -26,4 +26,10 @@
 	  <ProjectReference Include="..\..\external\RaceSharp\src\Utils\RaceSharp.Utils\RaceSharp.Utils.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Update="Components\Modal\DefaultTemplates\OkCancelButtons.razor.scss">
+	    <DependentUpon>OkCancelButtons.razor</DependentUpon>
+	  </None>
+	</ItemGroup>
+
 </Project>

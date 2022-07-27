@@ -1,9 +1,26 @@
 ﻿@use "../wwwroot/statics";
 
+$bg-color: #d5d5d5;
+
 button {
+	padding: 0.5rem 2.25rem;
+	color: black;
+	border-radius: 10px;
+	font-size: 1rem;
+	font-weight: bold;
+	border: none;
+	font-family: statics.$font-family;
+	background-color: $bg-color;
+	transition: .15s;
+
 	@each $name, $color in statics.$accent-colors {
-		&.#{$name} {
-			color: $color;
+		&.always-color.#{$name}, &.#{$name}:hover:not(.always-color) {
+			background-color: $color;
 		}
 	}
+
+	&.always-color:hover {
+		background-color: $bg-color;
+	}
+
 }

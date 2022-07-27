@@ -1,7 +1,7 @@
 ﻿@using Zebra.Utils
 @implements Zebra.Components.Interfaces.IAccentComponent
 
-<button @onclick="OnClick" class="@Accent.CssClassName()">
+<button @onclick="OnClick" class="@Accent.CssClassName() @(AlwaysColor ? "always-color" : "")">
 	@ChildContent
 </button>
 
@@ -14,4 +14,7 @@
 
 	[Parameter]
 	public AccentColor Accent { get; set; }
+
+	[Parameter]
+	public bool AlwaysColor { get; set; }
 }

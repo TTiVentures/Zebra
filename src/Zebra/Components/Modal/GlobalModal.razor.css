@@ -8,11 +8,18 @@ dialog {
   max-width: 500px;
   padding: 0;
 }
+dialog[open] {
+  display: flex;
+}
 dialog .content-container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 2rem;
+  padding: 1.5rem;
+  justify-content: space-between;
+}
+dialog.accent-none .title {
+  color: #9b9b9b;
 }
 dialog.accent-info .title {
   color: #5bc0de;
