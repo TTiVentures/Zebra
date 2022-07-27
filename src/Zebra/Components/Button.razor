@@ -1,0 +1,17 @@
+﻿@using Zebra.Utils
+@implements Zebra.Components.Interfaces.IAccentComponent
+
+<button @onclick="OnClick" class="@Accent.CssClassName()">
+	@ChildContent
+</button>
+
+@code {
+	[Parameter]
+	public RenderFragment? ChildContent { get; set; }
+
+	[Parameter]
+	public EventCallback<MouseEventArgs> OnClick { get; set; }
+
+	[Parameter]
+	public AccentColor Accent { get; set; }
+}

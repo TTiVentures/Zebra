@@ -1,6 +1,4 @@
-﻿using RaceSharp;
-
-namespace Zebra.Utils;
+﻿namespace Zebra.Utils;
 
 public enum AccentColor
 {
@@ -15,6 +13,6 @@ public static class AccentColorExtensions
 {
 	public static string CssClassName(this AccentColor color)
 	{
-		return "accent-" + color.ToString().PascalToKebabCase();
+		return "accent-" + color.ToString().ToLower();
 	}
 }

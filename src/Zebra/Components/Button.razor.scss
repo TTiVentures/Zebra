@@ -1,0 +1,9 @@
+﻿@use "../wwwroot/statics";
+
+button {
+	@each $name, $color in statics.$accent-colors {
+		&.#{$name} {
+			color: $color;
+		}
+	}
+}

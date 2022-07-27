@@ -3,7 +3,7 @@ dialog {
   border: none;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 25px 50px -12px;
   min-height: 20vh;
   max-width: 500px;
   padding: 0;
@@ -14,17 +14,17 @@ dialog .content-container {
   gap: 1rem;
   padding: 2rem;
 }
-dialog .content-container.info {
-  background-color: #5bc0de;
+dialog.accent-info .title {
+  color: #5bc0de;
 }
-dialog .content-container.success {
-  background-color: #5cb85c;
+dialog.accent-success .title {
+  color: #5cb85c;
 }
-dialog .content-container.warning {
-  background-color: #f0ad4e;
+dialog.accent-warning .title {
+  color: #f0ad4e;
 }
-dialog .content-container.danger {
-  background-color: #d9534fr;
+dialog.accent-danger .title {
+  color: #d9534f;
 }
 
 /*# sourceMappingURL=GlobalModal.razor.css.map */

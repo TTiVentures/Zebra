@@ -11,7 +11,7 @@
 	@if (_currentTemplate is not null)
 	{
 		<div class="content-container" @onclick:stopPropagation="true">
-			<h1>@_currentTemplate.Title</h1>
+			<h1 class="title">@_currentTemplate.Title</h1>
 			<div class="content-wrapper">
 				@_currentTemplate.TemplateContent
 			</div>
